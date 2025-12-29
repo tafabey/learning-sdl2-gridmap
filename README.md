@@ -1,11 +1,41 @@
 # learning-sdl2-gridmap
 
-I am learning SDL2 with C.
+This project is an SDL2 practice written in C.
 
-This repository contains a small SDL2 program that:
-- Reads a grid of 0s and 1s from a file
-- Renders the grid as a black-and-white map
-- Allows a square to move on the grid
-- Prevents movement into blocked (black) cells
+## What does this project do?
 
-This project is created purely for learning purposes.
+- Reads a grid of `0` and `1` values from the `tile.txt` file  
+  (default size is 10x10, can be changed before compilation using the
+  `COLS` and `ROWS` macros in the source code).
+- Renders the grid on the screen:
+  - `0` values are drawn as black tiles
+  - `1` values are drawn as white tiles
+- Draws a brown square (player).
+- Allows the player to move only on white tiles and prevents movement
+  into black tiles.
+
+## Build
+
+SDL2 development libraries must be installed on your system.
+
+On Debian / Ubuntu based systems:
+```bash
+sudo apt install libsdl2-dev
+```
+
+Compile:
+```bash
+gcc learning-sdl2-gridmap.c -o gridmap.elf `sdl2-config --cflags --libs`
+```
+
+## Run
+
+Make the file executable:
+```bash
+chmod +x gridmap.elf
+```
+
+Run the program:
+```bash
+./gridmap.elf
+```
