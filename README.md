@@ -1,41 +1,51 @@
-# learning-sdl2-gridmap
+learning-sdl2-gridmap
 
-This project is an SDL2 practice written in C.
+This project is purely for learning purposes. It is used to practice my C and SDL2 knowledge.
 
-## What does this project do?
 
-- Reads a grid of `0` and `1` values from the `tile.txt` file  
-  (default size is 10x10, can be changed before compilation using the
-  `COLS` and `ROWS` macros in the source code).
-- Renders the grid on the screen:
-  - `0` values are drawn as black tiles
-  - `1` values are drawn as white tiles
-- Draws a brown square (player).
-- Allows the player to move only on white tiles and prevents movement
-  into black tiles.
+---
 
-## Build
+What does this program do?
 
-SDL2 development libraries must be installed on your system.
+Reads a 10x10 grid of numbers from the tile.txt file
 
-On Debian / Ubuntu based systems:
-```bash
-sudo apt install libsdl2-dev
-```
+The grid size can be changed before compilation using macros:
+
+
+#define ROWS 10
+#define COLS 10
+
+Each number represents a tile type:
+
+0 → black (empty)
+
+1 → white (wall)
+
+3 → orange (lava)
+
+
+
+
+---
+
+Movement rules
+
+The player cannot move into WALL (white) tiles
+
+The player cannot move into LAVA (orange) tiles
+
+LAVA tiles also deal damage to the player
+
+
+
+---
+
+Build & Run
 
 Compile:
-```bash
-gcc learning-sdl2-gridmap.c -o gridmap.elf `sdl2-config --cflags --libs`
-```
 
-## Run
+gcc learning-sdl2-gridmap.c -o gridmap.elf -lSDL2
 
-Make the file executable:
-```bash
-chmod +x gridmap.elf
-```
+Run:
 
-Run the program:
-```bash
 ./gridmap.elf
-```
