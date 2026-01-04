@@ -37,9 +37,20 @@ LAVA tiles also deal damage to the player
 
 Build & Run
 
+SDL2 development libraries must be installed on your system.
+
+On Debian / Ubuntu based systems:
+```bash
+sudo apt install libsdl2-dev
+```
+
 Compile:
 ```bash
 gcc learning-sdl2-gridmap.c -o gridmap.elf -lSDL2
+```
+Make the file executable
+```bash
+chmod +x gridmap.elf
 ```
 Run:
 ```bash
