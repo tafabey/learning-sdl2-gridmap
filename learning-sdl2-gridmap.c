@@ -11,9 +11,9 @@ typedef enum {
 
 typedef enum {
     EMPTY = 0,
-    WALL = EMPTY | SOLID,
-    THORN = EMPTY | DAMAGE,
-    LAVA = EMPTY | SOLID + DAMAGE
+    WALL = (EMPTY) | (SOLID),
+    THORN = (EMPTY) | (DAMAGE),
+    LAVA = (EMPTY) | (SOLID | DAMAGE)
 } Block;
 
 int block_to_flags(Block block) {
@@ -25,8 +25,8 @@ int main() {
     Block arr[ROWS][COLS];
     FILE *fp = fopen("tile.txt", "r");
     if (fp == NULL) {
-	perror("Failed to open file: ");
-	return -1;
+        perror("Failed to open file: ");
+        return -1;
     }
     SDL_Init(SDL_INIT_VIDEO);
     SDL_Window *window = SDL_CreateWindow("SDL Texture denemesi", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0);
@@ -126,9 +126,9 @@ int main() {
 	    }
 	}
 	SDL_RenderClear(renderer);
+    
 	for (int i = 0; i < COLS; i++) {
 	    for (int j = 0; j < ROWS; j++) {
-		fscanf(fp, "%d", &arr[i][j]);
 		dstRect.x = j * 32;
 		dstRect.y = i * 32;
 		if (arr[i][j] == WALL)
